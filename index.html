@@ -85,9 +85,29 @@
             color: #2575fc;
         }
 
-        .print-btn {
-            margin-top: 20px;
-            text-align: center;
+        /* Print Styling */
+        @media print {
+            body {
+                background: none;
+                color: #000;
+            }
+
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+            }
+
+            .form, .print-btn {
+                display: none;
+            }
+
+            .resume {
+                margin: 0;
+                padding: 0;
+                background: none;
+                box-shadow: none;
+            }
         }
     </style>
 </head>
@@ -133,7 +153,7 @@
         </div>
         <div class="resume" id="resume"></div>
         <div class="print-btn">
-            <button class="btn" onclick="window.print()">Print Resume</button>
+            <button class="btn" onclick="printResume()">Print Resume</button>
         </div>
     </div>
 
@@ -164,6 +184,10 @@
                 <p><strong>Projects:</strong></p>
                 <p>${projects}</p>
             `;
+        }
+
+        function printResume() {
+            window.print();
         }
     </script>
 </body>
